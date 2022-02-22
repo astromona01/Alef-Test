@@ -45,8 +45,8 @@ export default {
     this.$emit('update:layout', this.__layoutDefault);
   },
   mounted() {
-    const parent = this.$store.getters.parent;
-    parent.name ? this.parent = parent : '';
+    const parent = Object.assign({}, this.$store.getters.parent);
+    this.parent = parent.name ? parent : this.parent;
   },
   methods: {
     saveChildren(children) {

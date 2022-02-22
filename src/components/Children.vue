@@ -11,22 +11,22 @@
     </div>
     <div class="info-body">
       <div class="children-item"
-         v-for="children in children"
-         :key="children.id"
+         v-for="child in children"
+         :key="child.id"
       >
         <div
             class="input-wrapper children-name"
-            :class="{'visible-error': children.invalidName}"
+            :class="{'visible-error': child.invalidName}"
         >
-          <input type="text" class="name" v-model="children.name">
+          <input type="text" class="name" v-model="child.name">
         </div>
         <div
             class="input-wrapper"
-            :class="{'visible-error': children.invalidAge}"
+            :class="{'visible-error': child.invalidAge}"
         >
-          <input type="text" class="age" v-model="children.age">
+          <input type="text" class="age" v-model="child.age">
         </div>
-        <button @click="removeChildren(children.id)">Удалить</button>
+        <button @click="removeChildren(child.id)">Удалить</button>
       </div>
     </div>
     <button
@@ -40,6 +40,7 @@
 
 <script>
 import '../styles/children/children.css';
+
 export default {
   name: "children",
   props: {
@@ -53,14 +54,11 @@ export default {
   watch: {
     __childrenCount() {
       this.hideSaveBtn =
-        Object.keys(this.children).length === 5
-        ? true
-        : false;
+        Object.keys(this.children).length === 5;
     },
   },
-  mounted() {
-    const children = Object.assign({}, this.$store.getters.children);
-    Object.keys(children).length ? this.children = children : '';
+  mounted(){
+    this.children = Object.assign({}, this.$store.getters.children);
   },
   methods: {
     addInput() {
@@ -106,8 +104,6 @@ export default {
       for (let key in this.children){
         if (!this.validForm(this.children[key])){
           return false;
-        } else {
-          continue;
         }
       }
       return true;

@@ -59,7 +59,7 @@ export default {
     },
   },
   mounted() {
-    const children = this.$store.getters.children;
+    const children = Object.assign({}, this.$store.getters.children);
     Object.keys(children).length ? this.children = children : '';
   },
   methods: {

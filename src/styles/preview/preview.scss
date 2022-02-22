@@ -1,0 +1,23 @@
+@mixin previewStyle {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  color: #111111;
+}
+
+.parent-data {
+  @include previewStyle();
+}
+.children-data {
+  padding: 10px 20px;
+  @include previewStyle();
+  background: #F1F1F1;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.children-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

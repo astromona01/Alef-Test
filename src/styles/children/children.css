@@ -1,0 +1,14 @@
+.hide {
+  display: none;
+}
+
+.error {
+  display: none;
+  color: red;
+}
+
+.visible-error {
+  border-color: red;
+}
+
+/*# sourceMappingURL=children.css.map */

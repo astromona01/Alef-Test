@@ -58,9 +58,16 @@ export default {
     },
   },
   mounted(){
-    this.children = Object.assign({}, this.$store.getters.children);
+    this.children = Object.assign({}, this.handleStoreChildren(this.$store.getters.children));
   },
   methods: {
+    handleStoreChildren(storeChildren) {
+      let children = {};
+      for (let key in storeChildren){
+        children[key] = Object.assign({}, storeChildren[key])
+      }
+      return children;
+    },
     addInput() {
       let lastKey = +Object.keys(this.children)[Object.keys(this.children).length-1]
       lastKey += 1;
